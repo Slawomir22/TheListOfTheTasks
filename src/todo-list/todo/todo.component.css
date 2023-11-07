@@ -1,0 +1,12 @@
+.col-first-width {
+   width : 25rem;
+}
+.col-width {
+   width: 10rem;
+}
+
+table {
+   table-layout: fixed; 
+   border: 2px solid green;
+   border-radius: 10px;
+}

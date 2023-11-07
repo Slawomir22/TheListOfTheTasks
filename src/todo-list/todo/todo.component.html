@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-12">
+    <table class="table align-middle">
+      <tbody>
+        <tr>
+          <td class="col-first-width">
+            <app-todo-edit [todo]="todo"></app-todo-edit>
+          </td>
+          <td style="width:8rem">
+            Is it done? {{ todo.isDone ? 'Yes ' : ' No' }}
+          </td>
+          <td style="width:12rem">
+            <span>Deadline: {{ todo.dueDate | date: 'dd/MM/yyyy' }}</span>
+          </td>
+          <td style="width:7rem">
+            <span
+              *ngIf="status"
+              [ngStyle]="{ color: todo.status === 'Overdue' ? 'red' : null }"
+              >{{ switchingStatuses() }} {{ todo.status }}</span
+            >
+          </td>
+          <td class="col-width text-center">
+            <button class="btn btn-success" (click)="checkAsDone()">
+              Check as done
+            </button>
+          </td>
+          <td class="col-width text-end">
+            <button class="btn btn-success" (click)="removeTodo()">
+              Remove task
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

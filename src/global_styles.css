@@ -1,0 +1,13 @@
+/* Add application styles & imports to this file! */
+* {
+  margin: 0;
+  padding: 0;
+}
+@import '~bootstrap/dist/css/bootstrap.min.css';
+body {
+  background-color: rgb(145, 172, 149);
+}
+
+.font-small {
+   font-size: small;
+}
