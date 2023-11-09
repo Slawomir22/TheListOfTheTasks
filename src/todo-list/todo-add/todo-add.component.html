@@ -1,98 +1,58 @@
 <div class="row">
-  <div class="col-12">
-    <button (click)="openTaskModal(template)" class="btn btn-success">
-      Add a task
-    </button>
-  </div>
+	<div class="col-12 mb-3">
+		<div class="text-center">
+			<button (click)="openTaskModal(template)" class="btn btn-success">
+				Add a task
+			</button>
+		</div>
+	</div>
 
-  <div class="col-12">
-    <ng-template #template>
-      <form #addTaskForm="ngForm" novalidate (ngSubmit)="saveNewTask()">
-        <div class="modal-header">
-          <h4 class="modal-title pull-left">Adding a task</h4>
-          <button
-            type="button"
-            class="btn-close close pull-right"
-            aria-label="Close"
-            (click)="modalRef?.hide()"
-          >
-            <span aria-hidden="true" class="visually-hidden">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-xs-12 col-12 col-sm-6 mb-3">
-              <label for="inputTitle" class="form-label"
-                >Enter the title of the task</label
-              >
-              <input
-                type="text"
-                class="form-control mb-2"
-                id="inputTitle"
-                name="inputTitle"
-                #inputTitle="ngModel"
-                [(ngModel)]="title"
-                minlength="3"
-                required
-              />
-              <alert
-                type="danger"
-                *ngIf="
+	<div class="col-12">
+		<ng-template #template>
+			<form #addTaskForm="ngForm" novalidate (ngSubmit)="saveNewTask()">
+				<div class="modal-header">
+					<h4 class="modal-title pull-left">Adding a task</h4>
+					<button type="button" class="btn-close close pull-right" aria-label="Close"
+						(click)="modalRef?.hide()">
+						<span aria-hidden="true" class="visually-hidden">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-12 col-12 col-sm-6 mb-3">
+							<label for="inputTitle" class="form-label">Enter the title of the task</label>
+							<input type="text" class="form-control mb-2" id="inputTitle" name="inputTitle"
+								#inputTitle="ngModel" [(ngModel)]="title" minlength="3" required />
+							<alert type="danger" *ngIf="
                   inputTitle.invalid && (inputTitle.touched || inputTitle.dirty)
-                "
-              >
-                <span
-                  class="font-small"
-                  *ngIf="inputTitle.errors?.['minlength']"
-                  >This field has to have 3 characters at least</span
-                >
-                <span
-                  class="font-small"
-                  *ngIf="inputTitle.errors?.['required']"
-                >
-                  This field is required
-                </span>
-              </alert>
-            </div>
+                ">
+								<span class="font-small" *ngIf="inputTitle.errors?.['minlength']">This field has to have
+									3 characters at least</span>
+								<span class="font-small" *ngIf="inputTitle.errors?.['required']">
+									This field is required
+								</span>
+							</alert>
+						</div>
 
-            <div class="col-xs-12 col-12 col-sm-6 mb-3">
-              <label for="selectDate" class="form-label"
-                >Select the deadline
-              </label>
-              <input
-                type="text"
-                class="form-control mb-2"
-                name="selectDate"
-                #selectDate="ngModel"
-                [(ngModel)]="dueDate"
-                placement="bottom"
-                id="selectDate"
-                bsDatepicker
-                value="{{ dueDate | date: 'dd/MM/yyyy' }}"
-                (bsValueChange)="valueChange($event)"
-                [minDate]="minimalDate"
-                required
-              />
-              <alert
-                type="danger"
-                *ngIf="selectDate.invalid && selectDate.dirty"
-              >
-                <span class="font-small" *ngIf="selectDate.errors?.['required']"
-                  >This field is required</span
-                >
-              </alert>
-            </div>
-          </div>
+						<div class="col-xs-12 col-12 col-sm-6 mb-3">
+							<label for="selectDate" class="form-label">Select the deadline
+							</label>
+							<input type="text" class="form-control mb-2" name="selectDate" #selectDate="ngModel"
+								[(ngModel)]="dueDate" placement="bottom" id="selectDate" bsDatepicker
+								value="{{ dueDate | date: 'dd/MM/yyyy' }}" (bsValueChange)="valueChange($event)"
+								[minDate]="minimalDate" required />
+							<alert type="danger" *ngIf="selectDate.invalid && selectDate.dirty">
+								<span class="font-small" *ngIf="selectDate.errors?.['required']">This field is
+									required</span>
+							</alert>
+						</div>
+					</div>
 
-          <button
-            type="submit"
-            [disabled]="addTaskForm.invalid"
-            class="btn btn-success"
-          >
-            Save the task
-          </button>
-        </div>
-      </form>
-    </ng-template>
-  </div>
+					<button type="submit" [disabled]="addTaskForm.invalid" class="btn btn-success">
+						Save the task
+					</button>
+				</div>
+			</form>
+		</ng-template>
+	</div>
 </div>
