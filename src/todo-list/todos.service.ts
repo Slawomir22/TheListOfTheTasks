@@ -4,46 +4,59 @@ import { Todo } from './todo';
 
 @Injectable()
 export class TodosService {
-  idNumber!: number;
+	idNumber!: number;
 
-  allTodos: Todo[] = [];
-  allTodos$ = new BehaviorSubject<Todo[]>(this.allTodos);
-  constructor() {}
+	private allTodos: Todo[] = [];
+	private allTodos$ = new BehaviorSubject<Todo[]>(this.allTodos);
+	constructor() { }
 
-  deleteTodo(id: number): void {
-    this.allTodos = this.allTodos.filter((todo: Todo) => todo.id !== id);
-    this.savingToLocalStorage();
-  }
+	addNewTodo(title: string, dueDate: number) {
+		this.allTodos.push({
+			title: title,
+			isDone: false,
+			id: this.generateId(),
+			dueDate: dueDate,
+			status: '',
+		})
+		this.savingToLocalStorage();
+	}
 
-  setAsDone(id: number): void {
-    this.allTodos.forEach((todo: Todo) => {
-      todo.id === id ? (todo.isDone = true) : null;
-    });
-    this.savingToLocalStorage();
-  }
 
-  editCurrentTodo(id: number, title: string) {
-    this.allTodos.forEach((todo: Todo) => {
-      todo.id === id ? (todo.title = title) : null;
-    });
-    this.savingToLocalStorage();
-  }
+	deleteTodo(id: number): void {
+		this.allTodos = this.allTodos.filter((todo: Todo) => todo.id !== id);
+		this.savingToLocalStorage();
+	}
 
-  savingToLocalStorage(): void {
-    localStorage.setItem('allTodos', JSON.stringify(this.allTodos));
-    this.allTodos$.next(this.allTodos);
-  }
+	setAsDone(id: number): void {
+		this.allTodos.forEach((todo: Todo) => {
+			todo.id === id ? (todo.isDone = true) : null;
+		});
+		this.savingToLocalStorage();
+	}
 
-  gettingFromLocalStorage(): BehaviorSubject<Todo[]> {
-    this.allTodos = JSON.parse(localStorage.getItem('allTodos') || '[]');
-    this.allTodos$.next(this.allTodos);
-    return this.allTodos$;
-  }
+	editCurrentTodo(id: number, title: string) {
+		this.allTodos.forEach((todo: Todo) => {
+			todo.id === id ? (todo.title = title) : null;
+		});
+		this.savingToLocalStorage();
+	}
 
-  generateId(): void {
-    let firstPartId = Math.random() * 10;
-    let secondPartId = Math.random() * 10;
-    let idNumber = firstPartId + secondPartId;
-    this.idNumber = idNumber;
-  }
+	savingToLocalStorage(): void {
+		localStorage.setItem('allTodos', JSON.stringify(this.allTodos));
+		this.allTodos$.next(this.allTodos);
+	}
+
+	gettingFromLocalStorage(): BehaviorSubject<Todo[]> {
+		this.allTodos = JSON.parse(localStorage.getItem('allTodos') || '[]');
+		this.allTodos$.next(this.allTodos);
+		return this.allTodos$;
+	}
+
+	generateId(): number {
+		let firstPartId = Math.random() * 10;
+		let secondPartId = Math.random() * 10;
+		let idNumber = firstPartId + secondPartId;
+		this.idNumber = idNumber;
+		return this.idNumber;
+	}
 }
