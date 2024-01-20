@@ -40,6 +40,5 @@ export class TodoAddComponent {
 			}, 500);
 		}
 		this.modalRef?.hide();
-		this.todosService.savingToLocalStorage();
 	}
 }
