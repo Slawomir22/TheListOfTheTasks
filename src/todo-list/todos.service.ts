@@ -41,14 +41,18 @@ export class TodosService {
 		this.savingToLocalStorage();
 	}
 
+	updateTodos() {
+		this.allTodos$.next(this.allTodos);
+	}
+
 	savingToLocalStorage(): void {
 		localStorage.setItem('allTodos', JSON.stringify(this.allTodos));
-		this.allTodos$.next(this.allTodos);
+		this.updateTodos();
 	}
 
 	gettingFromLocalStorage(): BehaviorSubject<Todo[]> {
 		this.allTodos = JSON.parse(localStorage.getItem('allTodos') || '[]');
-		this.allTodos$.next(this.allTodos);
+		this.updateTodos();
 		return this.allTodos$;
 	}
 
