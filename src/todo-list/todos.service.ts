@@ -42,7 +42,7 @@ export class TodosService {
 	}
 
 	updateTodos() {
-		this.allTodos$.next(this.allTodos);
+		this.allTodos$.next([...this.allTodos]);
 	}
 
 	savingToLocalStorage(): void {
