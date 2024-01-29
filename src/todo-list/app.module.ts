@@ -11,9 +11,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
 import { SortingPipe } from './pipes/sorting.pipe';
+import { TodoSearchComponent } from './todo-search/todo-search.component';
 
 @NgModule({
-  declarations: [TodoListComponent, TodoComponent, TodoAddComponent, TodoEditComponent, SortingPipe],
+  declarations: [TodoListComponent, TodoComponent, TodoAddComponent, TodoEditComponent, SortingPipe, TodoSearchComponent],
   imports: [
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
