@@ -5,7 +5,6 @@
 			<app-todo-search *ngIf="allTodos.length > 0"></app-todo-search>
 			<app-todo *ngFor="let aTodo of allTodos | sorting; trackBy: trackById" [todo]="aTodo"
 				[status]="status"></app-todo>
-
 			<app-todo-add></app-todo-add>
 			<div class="text-center">
 				<button class="btn btn-success" *ngIf="allTodos.length > 0; else message" (click)="showStatuses()">
