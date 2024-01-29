@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
 	selector: 'app-todo-search',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
 	styleUrls: ['./todo-search.component.css']
 })
 export class TodoSearchComponent {
-	searchTitle: string | undefined;
+
+	searchTitle!: string;
+	@Output()
+	sendSearchedTitile = new EventEmitter<string>();
+
+	startSearch() {
+		this.sendSearchedTitile.emit(this.searchTitle);
+	}
+
+
 }

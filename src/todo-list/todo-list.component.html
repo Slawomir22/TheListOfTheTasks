@@ -2,12 +2,12 @@
 	<div class="row">
 		<div class="col-12">
 			<h2 class="text-center my-3 text-white fw-bold">The list of the tasks</h2>
-			<app-todo-search *ngIf="allTodos.length > 0"></app-todo-search>
-			<app-todo *ngFor="let aTodo of allTodos | sorting; trackBy: trackById" [todo]="aTodo"
-				[status]="status"></app-todo>
+			<app-todo-search (sendSearchedTitile)="filterTitles($event)" *ngIf="allTodos.length > 0"></app-todo-search>
+			<app-todo *ngFor="let aTodo of allTodos | sorting | filtering : titleToSearch; trackBy: trackById"
+				[todo]="aTodo" [status]="status"></app-todo>
 			<app-todo-add></app-todo-add>
-			<div class="text-center">
-				<button class="btn btn-success" *ngIf="allTodos.length > 0; else message" (click)="showStatuses()">
+			<div class="text-center" *ngIf="allTodos.length > 0; else message">
+				<button class="btn btn-success" (click)="showStatuses()">
 					{{ !status ? 'Show' : 'Hide' }} statuses
 				</button>
 			</div>

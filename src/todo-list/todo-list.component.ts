@@ -4,26 +4,34 @@ import { Todo } from './todo';
 import { TodosService } from './todos.service';
 
 @Component({
-  selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.css'],
-  providers: [TodosService],
+	selector: 'app-todo-list',
+	templateUrl: './todo-list.component.html',
+	styleUrls: ['./todo-list.component.css'],
+	providers: [TodosService],
 })
 export class TodoListComponent implements OnInit {
-  allTodos$!: BehaviorSubject<Todo[]>;
-  status: boolean = false;
 
-  constructor(private todosService: TodosService) {}
+	allTodos$!: BehaviorSubject<Todo[]>;
+	status: boolean = false;
+	titleToSearch!: string;
 
-  ngOnInit() {
-    this.allTodos$ = this.todosService.gettingFromLocalStorage();
-  }
+	constructor(private todosService: TodosService) { }
 
-  showStatuses() {
-    this.status = !this.status;
-  }
+	ngOnInit() {
+		this.allTodos$ = this.todosService.gettingFromLocalStorage();
+	}
 
-  trackById(index: number, todo: Todo) {
-    return todo ? todo.id : null;
-  }
+	showStatuses() {
+		this.status = !this.status;
+	}
+
+	trackById(index: number, todo: Todo) {
+		return todo ? todo.id : null;
+	}
+
+	filterTitles(searchedTitle: string) {
+		//throw new Error('Method not implemented.');
+		this.titleToSearch = searchedTitle;
+
+	}
 }
