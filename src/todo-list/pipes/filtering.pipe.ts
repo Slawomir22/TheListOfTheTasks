@@ -6,19 +6,19 @@ import { Todo } from '../todo';
 })
 export class FilteringPipe implements PipeTransform {
 
-	transform(titles: Todo[], searchTitle: string): Todo[] | null {
-		if (!titles) {
+	transform(todos: Todo[], searchTitle: string): Todo[] | null {
+		if (!todos) {
 			return null;
 		}
 
 		if (!searchTitle) {
-			return titles;
+			return todos;
 		}
 
-		searchTitle = searchTitle.toLocaleLowerCase();
+		searchTitle = searchTitle.toLowerCase();
 
-		return titles.filter(title => {
-			return title.title.toLocaleLowerCase().includes(searchTitle);
+		return todos.filter(todo => {
+			return todo.title.toLowerCase().includes(searchTitle);
 		});
 
 	}
