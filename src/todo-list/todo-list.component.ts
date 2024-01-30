@@ -30,8 +30,6 @@ export class TodoListComponent implements OnInit {
 	}
 
 	filterTitles(searchedTitle: string) {
-		//throw new Error('Method not implemented.');
 		this.titleToSearch = searchedTitle;
-
 	}
 }
