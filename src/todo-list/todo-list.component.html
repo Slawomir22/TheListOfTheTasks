@@ -3,6 +3,11 @@
 		<div class="col-12">
 			<h2 class="text-center my-3 text-white fw-bold">The list of the tasks</h2>
 			<div style="background-color: white; height: 5px;"></div>
+			<div class="text-center mt-2">
+				<button type="button" class="btn btn-success">
+					Number of tasks <span class="badge bg-dark">{{ allTodos.length }}</span>
+				</button>
+			</div>
 			<app-todo-add></app-todo-add>
 			<div class="text-center mb-2" *ngIf="allTodos.length > 0; else message">
 				<button class="btn btn-success" (click)="showStatuses()">
