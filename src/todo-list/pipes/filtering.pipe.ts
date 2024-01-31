@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Todo } from '../todo';
 
 @Pipe({
-	name: 'filtering'
+	name: 'filtering',
+	standalone: true
 })
 export class FilteringPipe implements PipeTransform {
 

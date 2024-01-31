@@ -3,6 +3,7 @@ import { Todo } from '../todo';
 
 @Pipe({
 	name: 'sorting',
+	standalone: true
 })
 export class SortingPipe implements PipeTransform {
 

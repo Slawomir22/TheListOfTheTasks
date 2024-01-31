@@ -10,21 +10,23 @@ import { TodoAddComponent } from './todo-add/todo-add.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TodoEditComponent } from './todo-edit/todo-edit.component';
-import { SortingPipe } from './pipes/sorting.pipe';
+//import { SortingPipe } from './pipes/sorting.pipe';
 import { TodoSearchComponent } from './todo-search/todo-search.component';
-import { FilteringPipe } from './pipes/filtering.pipe';
+import { PIPES } from './pipes';
+//import { FilteringPipe } from './pipes/filtering.pipe';
 
 @NgModule({
-  declarations: [TodoListComponent, TodoComponent, TodoAddComponent, TodoEditComponent, SortingPipe, TodoSearchComponent, FilteringPipe],
-  imports: [
-    BsDatepickerModule.forRoot(),
-    ModalModule.forRoot(),
-    BrowserAnimationsModule,
-    CommonModule,
-    FormsModule,
-    BrowserModule,
-    AlertModule.forRoot()
-  ],
-  bootstrap: [TodoListComponent],
+	declarations: [TodoListComponent, TodoComponent, TodoAddComponent, TodoEditComponent, TodoSearchComponent],
+	imports: [
+		BsDatepickerModule.forRoot(),
+		ModalModule.forRoot(),
+		BrowserAnimationsModule,
+		CommonModule,
+		FormsModule,
+		BrowserModule,
+		AlertModule.forRoot(),
+		PIPES
+	],
+	bootstrap: [TodoListComponent],
 })
-export class AppModule {}
+export class AppModule { }
