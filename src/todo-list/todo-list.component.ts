@@ -17,11 +17,11 @@ export class TodoListComponent implements OnInit {
 
 	constructor(private todosService: TodosService) { }
 
-	ngOnInit() {
+	ngOnInit(): void {
 		this.allTodos$ = this.todosService.gettingFromLocalStorage();
 	}
 
-	showStatuses() {
+	showStatuses(): void {
 		this.status = !this.status;
 	}
 

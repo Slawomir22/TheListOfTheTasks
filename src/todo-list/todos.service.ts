@@ -10,7 +10,7 @@ export class TodosService {
 	private allTodos$ = new BehaviorSubject<Todo[]>(this.allTodos);
 	constructor() { }
 
-	addNewTodo(title: string, dueDate: number) {
+	addNewTodo(title: string, dueDate: number): void {
 		this.allTodos.push({
 			title: title,
 			isDone: false,

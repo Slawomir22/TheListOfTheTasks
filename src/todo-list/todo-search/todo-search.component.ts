@@ -11,7 +11,7 @@ export class TodoSearchComponent {
 	@Output()
 	sendSearchedTitile = new EventEmitter<string>();
 
-	startSearch() {
+	startSearch(): void {
 		this.sendSearchedTitile.emit(this.searchTitle);
 	}
 
