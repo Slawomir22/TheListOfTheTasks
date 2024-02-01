@@ -1,46 +1,25 @@
-<form
-  #taskEditForm="ngForm"
-  novalidate
-  (ngSubmit)="saveEditedTodo(taskEditForm)"
->
-  <div class="d-flex flex-row justify-content-between align-items-center">
-    <span class="w-auto text-nowrap me-1">Activity :</span>
-    <div class="w-75" *ngIf="isEditing">
-      <input
-        class="form-control"
-        type="text"
-        #newTitleInput="ngModel"
-        id="newTitleInput"
-        [(ngModel)]="newTitle"
-        placeholder="enter an activity (at least 3 characters)"
-        name="newTitleInput"
-        minlength="3"
-        required
-      />
-      <ng-container *ngIf="!isValid">
-        <div *ngIf="newTitleInput.invalid" class="font-small text-danger">
-          This field is required
-        </div>
-      </ng-container>
-    </div>
-    <span
-      class="me-auto"
-      *ngIf="!isEditing"
-      [ngStyle]="
+<form #taskEditForm="ngForm" novalidate (ngSubmit)="saveEditedTodo(taskEditForm)">
+	<div class="d-flex flex-row justify-content-between align-items-center">
+		<span class="w-auto text-nowrap me-1">Activity :</span>
+		<div class="w-75" *ngIf="isEditing">
+			<input class="form-control" type="text" #newTitleInput="ngModel" id="newTitleInput" [(ngModel)]="todo.title"
+				placeholder="enter an activity (at least 3 characters)" name="newTitleInput" minlength="3" required />
+			<ng-container *ngIf="!isValid">
+				<div *ngIf="newTitleInput.invalid" class="font-small text-danger">
+					This field is required
+				</div>
+			</ng-container>
+		</div>
+		<span class="me-auto" *ngIf="!isEditing" [ngStyle]="
         todo.isDone ? { 'text-decoration-line': 'line-through' } : null
-      "
-    >
-      {{ isEditing ? 'testing' : todo.title }}</span
-    >
-    <button
-      class="btn btn-success ms-1 w-25"
-      *ngIf="!isEditing"
-      (click)="editTodo()"
-    >
-      Edit task
-    </button>
-    <button class="btn btn-success ms-1 w-25" *ngIf="isEditing" type="submit">
-      Save task
-    </button>
-  </div>
+      ">
+			{{ todo.title }}
+		</span>
+		<button class="btn btn-success ms-1 w-25" *ngIf="!isEditing" (click)="editTodo()">
+			Edit task
+		</button>
+		<button class="btn btn-success ms-1 w-25" *ngIf="isEditing" type="submit">
+			Save task
+		</button>
+	</div>
 </form>
