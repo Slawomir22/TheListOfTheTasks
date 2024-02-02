@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Todo } from '../todo';
+import { TitleCasePipe } from '@angular/common';
 
 @Pipe({
 	name: 'sorting',
@@ -7,8 +8,8 @@ import { Todo } from '../todo';
 })
 export class SortingPipe implements PipeTransform {
 
-	transform(value: Array<Todo>): Array<Todo> {
-		return value.sort((a, b) => a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1)
+	transform(title: Todo[]): Todo[] {
+		return title.sort((a, b) => a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1)
 	}
 
 }
