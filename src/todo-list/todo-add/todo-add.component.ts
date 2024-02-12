@@ -9,10 +9,7 @@ import { TodosService } from '../todos.service';
 	styleUrls: ['./todo-add.component.css'],
 })
 export class TodoAddComponent {
-	bsInlineValue = new Date();
 	modalRef?: BsModalRef;
-	addTaskForm!: NgForm;
-
 	title!: string | null;
 	dueDate!: number;
 	minimalDate: Date = new Date();
