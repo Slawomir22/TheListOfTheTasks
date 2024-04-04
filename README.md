@@ -1,6 +1,12 @@
 # TheListOfTheTasks
-
+This is the application for tasks' management.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.9.
+
+Main other technologies used :
+Bootstrap - version: 5.3.2,
+Ngx-bootstrap - version: 11.0.2,
+Rxjs - version:  7.8.0,
+Typescript - version: 5.1.3,
 
 ## Development server
 
