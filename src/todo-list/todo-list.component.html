@@ -19,7 +19,7 @@
 				</app-todo-search>
 			</ng-container>
 			<app-todo *ngFor="let aTodo of allTodos | sorting | filtering : titleToSearch; trackBy: trackById"
-				[todo]="aTodo" [status]="status">
+				[todo]="aTodo">
 			</app-todo>
 			<ng-template #message>
 				<div class="row">

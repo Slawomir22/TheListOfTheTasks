@@ -13,7 +13,7 @@
 						<span>Deadline: {{ todo.dueDate | date: 'dd/MM/yyyy' }}</span>
 					</td>
 					<td style="width:7rem">
-						<span *ngIf="status" [ngStyle]="{ color: todo.status === 'Overdue' ? 'red' : null }">{{
+						<span [ngStyle]="{ color: todo.status === 'Overdue' ? 'red' : null }">{{
 							switchingStatuses }} {{ todo.status }}</span>
 					</td>
 					<td class="col-width text-center">

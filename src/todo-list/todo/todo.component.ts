@@ -11,8 +11,8 @@ import { TodosService } from '../todos.service';
 export class TodoComponent {
 	@Input()
 	todo!: Todo;
-	@Input()
-	status!: boolean;
+	// @Input()
+	// status!: boolean;
 	currentDate = new Date().getTime();
 
 	constructor(public todosService: TodosService) { }
